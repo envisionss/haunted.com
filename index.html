@@ -22,6 +22,20 @@
             border: 2px solid rgb(45, 45, 45); /* Border color */
             position: relative; /* Needed for absolute positioning */
             border-radius: 10px; /* Rounded corners */
+            animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
+        }
+
+        .textbox, .textbox2, .custom-text, .button-container {
+            animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
+        }
+
+        .textbox, .textbox2 {
+            transition: width 0.5s ease, height 0.5s ease; /* Add smooth transition for width and height */
+        }
+
+        .textbox:focus, .textbox2:focus {
+            width: 80%; /* Keep width same on focus */
+            height: 40px; /* Increase height on focus */
         }
 
         .textbox {
@@ -32,7 +46,7 @@
             border-radius: 5px; /* Rounded corners */
             position: absolute;
             left: 10%; /* Position from left */
-            top: 40%; /* Position from top */
+            top: calc(40% - 25px); /* Position from top with enough spacing */
             transform: translateY(-50%); /* Center vertically */
         }
 
@@ -44,7 +58,7 @@
             border-radius: 5px; /* Rounded corners */
             position: absolute;
             left: 10%; /* Position from left */
-            top: 60%; /* Position from top */
+            top: calc(60% - 25px); /* Position from top with enough spacing */
             transform: translateY(-50%); /* Center vertically */
         }
 
@@ -62,7 +76,7 @@
         .button-container {
             position: absolute;
             left: 10%;
-            top: 80%; /* Position the button container under the password textbox */
+            top: calc(80% - 40px); /* Position the button container under the password textbox with enough spacing */
             width: 80%;
             display: flex;
             justify-content: space-between; /* Ensure buttons are spaced evenly */
@@ -75,6 +89,22 @@
             color: white;
             border: 1px solid black;
             border-radius: 5px;
+            cursor: pointer; /* Change cursor to indicate it's clickable */
+            transition: transform 0.5s ease, background-color 0.5s ease; /* Add smooth transition for transform and background-color */
+        }
+
+        .button:hover {
+            transform: scale(1.05); /* Increase size on hover */
+            background-color: rgb(70, 70, 70); /* Highlight background color on hover */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
