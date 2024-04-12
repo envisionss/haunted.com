@@ -3,171 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haunted Configs</title>
+<title>Haunted Configs V2</title>
 <style>
     body {
         background-color: rgb(23, 23, 23);
-        padding: 20px;
         margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         min-height: 100vh;
-    }
-
-    .button-container {
-        border: 2px solid #7a7a7a;
-        border-radius: 20px;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        width: 400px;
-        margin-bottom: 10px;
-    }
-
-    .box,
-    .roblox-box {
-        width: 200px;
-        height: 120px;
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border: 2px solid #3f3f3f;
-        opacity: 0;
-        animation: fadeIn 2s forwards;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
-        font-size: 20px;
-        transition: background-color 0.3s;
+        position: relative; /* Added to allow absolute positioning */
     }
 
-    .box:hover,
-    .roblox-box:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .box:hover, .roblox-box:hover {
-        cursor: pointer; /* Change cursor to pointer on hover */
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .button-container {
-        border: 2px solid rgb(100, 100, 100);
+    .overlay {
+        width: 400px;
+        height: 300px;
+        background-color: rgba(37, 37, 37, 0.5); /* 50% transparent black */
+        border: 2px solid black;
         border-radius: 20px;
-        padding: 10px;
-        display: inline-block;
-        text-align: center;
-    }
-
-    .fading-text {
         position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(0, -50%);
-        font-size: 18px;
+        top: calc(50% - 150px); /* Center vertically */
+        left: calc(50% - 200px); /* Center horizontally */
+        display: flex;
+        justify-content: flex-start; /* Align text to the left */
+        align-items: flex-start; /* Align text to the top */
         color: white;
-        animation: fadeText 3s infinite alternate;
+        font-size: 17px; /* Adjusted font size */
+        padding: 20px; /* Added padding for text */
+        box-sizing: border-box; /* Include padding in width and height */
     }
 
-    @keyframes fadeText {
-        0% { color: white; }
-        50% { color: black; }
-        100% { color: white; }
+    .button,
+    .configs-button,
+    .roblox-scripts-button {
+        width: 190px; /* Adjusted width */
+        height: 95px; /* Adjusted height */
+        background-color: rgb(45, 45, 45);
+        border: 2px solid black;
+        border-radius: 10px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
     }
 
-    /* Add styles for the buttons that fade in */
-    .fade-in {
-        animation: fadeInButtons 1s forwards;
+    .button:hover,
+    .configs-button:hover,
+    .roblox-scripts-button:hover {
+        cursor: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Link_Select_Cursor.svg/1024px-Link_Select_Cursor.svg.png'), pointer;
+        background-color: rgb(55, 55, 55);
+        border-width: 3px;
+        width: 260px; /* Adjusted width */
+        height: 110px; /* Adjusted height */
+        border-radius: 15px;
     }
 
-    @keyframes fadeInButtons {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    .button {
+        top: 70px;
+        left: 40px;
     }
 
-    /* Added margin to the Roblox Tools button */
-    .roblox-box {
-        margin-right: 10px;
+    .configs-button {
+        top: 210px;
+        left: 40px;
+    }
+
+    .roblox-scripts-button {
+        top: 350px;
+        left: 40px;
+    }
+
+    /* Adjusted positions for the new buttons */
+    .configs-button-2 {
+        top: 490px;
+        left: 40px;
+    }
+
+    .configs-button-3 {
+        top: 630px;
+        left: 40px;
+    }
+
+    .bottom-text {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        animation: color-fade 6s infinite;
+    }
+
+    @keyframes color-fade {
+        0% {
+            color: blue;
+        }
+        50% {
+            color: lightblue;
+        }
+        100% {
+            color: blue;
+        }
     }
 </style>
 </head>
 <body>
-    <div class="button-container">
-        <div class="container">
-            <div class="box">Home</div>
-            <div class="box" style="margin-left: 10px;" id="configsButton">Configs</div>
-        </div>
-        <div class="container">
-            <div class="roblox-box" id="scriptsButton">Roblox Scripts</div>
-            <div class="roblox-box" id="toolsButton">Roblox Tools</div>
-        </div>
+    <div class="overlay"></div>
+    <div class="button" onclick="navigateToHome()">Home</div>
+    <div class="configs-button" onclick="downloadConfigs()">Configs</div>
+    <div class="roblox-scripts-button" onclick="downloadRobloxScripts()">Roblox Scripts</div> <!-- Updated onclick attribute -->
+
+    <!-- Duplicate of Configs button -->
+    <div class="configs-button configs-button-2" onclick="navigateToHome()">Coming Soon</div>
+    
+    <!-- Duplicate of Configs button -->
+    <div class="configs-button configs-button-3" onclick="navigateToHome()">Coming Soon</div>
+
+    <div class="bottom-text">𝙏𝙝𝙚 𝘽𝙚𝙨𝙩 𝙁𝙧𝙚𝙚 𝘾𝙤𝙣𝙛𝙞𝙜 𝙑𝙖𝙪𝙡𝙩 - 𝙎𝙣𝙤
     </div>
 
     <script>
-        document.getElementById('configsButton').addEventListener('click', function() {
-            // Directly initiate the download
-            window.location.href = "https://cdn.discordapp.com/attachments/1219718105438355518/1226990167080964208/New_folder_4.zip?ex=6626c6a4&is=661451a4&hm=81b023f31aee2f4a5fa0277cceedf840fb49cc66ca0375ab1ba939d3d32355b8&";
-        });
+        function navigateToHome() {
+            // You can add your navigation logic here
+        }
 
-        document.getElementById('scriptsButton').addEventListener('click', function() {
-            // Directly initiate the download
-            window.location.href = "https://cdn.discordapp.com/attachments/1219718105438355518/1226992223686627348/paid_leaked_scripts.rar?ex=6626c88e&is=6614538e&hm=c106ff86cda158e7cb105701b2bb08fbd1a3e070cabb3cbf84fb687ab29d6844&";
-        });
+        function downloadConfigs() {
+            var overlay = document.querySelector('.overlay');
+            overlay.textContent = "[+] Downloading";
+            
+            var link = document.createElement('a');
+            link.href = 'https://cdn.discordapp.com/attachments/1209585336775086130/1228232587118379069/New_folder_4_1.zip?ex=662b4bbc&is=6618d6bc&hm=27180f72c191d7e122187aaf648c3a1d5ae3effedcfd68c7bb05c6d4b430e086';
+            link.download = 'New_folder_4_1.zip';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(function() {
+                overlay.textContent = ""; // Clear the overlay text
+            }, 2000); // Change to appropriate delay for your download
+        }
 
-        document.getElementById('toolsButton').addEventListener('click', function() {
-            // Redirect to a blank page with the specified background color
-            var blankPage = window.open('about:blank', '_blank');
-            var buttonsHTML = `
-                <html>
-                    <head>
-                        <title>Blank Page</title>
-                        <style>
-                            body {
-                                background-color: rgb(23, 23, 23);
-                                margin: 0;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 100vh;
-                            }
-                            .button {
-                                width: 200px;
-                                height: 120px;
-                                border-radius: 20px;
-                                border: 2px solid #646464;
-                                background-color: transparent;
-                                margin: 10px;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                color: white;
-                                font-size: 20px;
-                                transition: background-color 0.3s;
-                            }
-                            .button:hover {
-                                background-color: rgba(255, 255, 255, 0.1);
-                                cursor: pointer;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="button fade-in" onclick="alert('Are You Retarded Zigga')">Bypassed Executor</div>
-                        <div class="button fade-in" onclick="alert('Are You Retarded Zigga')">Coming Soon</div>
-                        <div class="button fade-in" onclick="history.back()">Back</div>
-                    </body>
-                </html>
-            `;
-            blankPage.document.write(buttonsHTML);
-        });
+        function downloadRobloxScripts() {
+            var overlay = document.querySelector('.overlay');
+            overlay.textContent = "[+] Downloading";
+            
+            var link = document.createElement('a');
+            link.href = 'https://cdn.discordapp.com/attachments/1209585336775086130/1228234221785452585/paid_leaked_scripts.rar?ex=662b4d41&is=6618d841&hm=e039f3d564ac2f8d292b5eb1e69c9cdd29e361e90dac2c089c7098c9fdabe996';
+            link.download = 'paid_leaked_scripts.rar';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(function() {
+                overlay.textContent = ""; // Clear the overlay text
+            }, 2000); // Change to appropriate delay for your download
+        }
     </script>
 </body>
 </html>
