@@ -3,164 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haunted Configs V2</title>
+<title>Under Maintenance</title>
 <style>
     body {
-        background-color: rgb(23, 23, 23);
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative; /* Added to allow absolute positioning */
-    }
-
-    .overlay {
-        width: 400px;
-        height: 300px;
-        background-color: rgba(37, 37, 37, 0.5); /* 50% transparent black */
-        border: 2px solid black;
-        border-radius: 20px;
-        position: absolute;
-        top: calc(50% - 150px); /* Center vertically */
-        left: calc(50% - 200px); /* Center horizontally */
-        display: flex;
-        justify-content: flex-start; /* Align text to the left */
-        align-items: flex-start; /* Align text to the top */
-        color: white;
-        font-size: 17px; /* Adjusted font size */
-        padding: 20px; /* Added padding for text */
-        box-sizing: border-box; /* Include padding in width and height */
-    }
-
-    .button,
-    .configs-button,
-    .roblox-scripts-button {
-        width: 190px; /* Adjusted width */
-        height: 95px; /* Adjusted height */
-        background-color: rgb(45, 45, 45);
-        border: 2px solid black;
-        border-radius: 10px;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease;
-    }
-
-    .button:hover,
-    .configs-button:hover,
-    .roblox-scripts-button:hover {
-        cursor: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Link_Select_Cursor.svg/1024px-Link_Select_Cursor.svg.png'), pointer;
-        background-color: rgb(55, 55, 55);
-        border-width: 3px;
-        width: 260px; /* Adjusted width */
-        height: 110px; /* Adjusted height */
-        border-radius: 15px;
-    }
-
-    .button {
-        top: 70px;
-        left: 40px;
-    }
-
-    .configs-button {
-        top: 210px;
-        left: 40px;
-    }
-
-    .roblox-scripts-button {
-        top: 350px;
-        left: 40px;
-    }
-
-    /* Adjusted positions for the new buttons */
-    .configs-button-2 {
-        top: 490px;
-        left: 40px;
-    }
-
-    .configs-button-3 {
-        top: 630px;
-        left: 40px;
-    }
-
-    .bottom-text {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
         font-family: Arial, sans-serif;
-        font-size: 20px;
-        animation: color-fade 6s infinite;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #171717; /* Dark gray background */
+        color: white; /* Set text color to white */
     }
-
-    @keyframes color-fade {
-        0% {
-            color: blue;
-        }
-        50% {
-            color: lightblue;
-        }
-        100% {
-            color: blue;
-        }
+    .container {
+        background-color: rgba(2, 2, 2, 0);
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
     }
 </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="button" onclick="navigateToHome()">Home</div>
-    <div class="configs-button" onclick="downloadConfigs()">Configs</div>
-    <div class="roblox-scripts-button" onclick="downloadRobloxScripts()">Roblox Scripts</div> <!-- Updated onclick attribute -->
 
-    <!-- Duplicate of Configs button -->
-    <div class="configs-button configs-button-2" onclick="navigateToHome()">Fortnite [ Soon ]</div>
-    
-    <!-- Duplicate of Configs button -->
-    <div class="configs-button configs-button-3" onclick="navigateToHome()">Rust [ Soon ]</div>
+<div class="container">
+    <h1>🚧 Sorry, We're Down for Maintenance 🚧</h1>
+    <p>Please Come Back Later!</p>
+</div>
 
-
-    <div class="bottom-text">𝙏𝙝𝙚 𝘽𝙚𝙨𝙩 𝙁𝙧𝙚𝙚 𝘾𝙤𝙣𝙛𝙞𝙜 𝙑𝙖𝙪𝙡𝙩 - 𝙎𝙣𝙤
-    </div>
-
-    <script>
-        function navigateToHome() {
-            // You can add your navigation logic here
-        }
-
-        function downloadConfigs() {
-            var overlay = document.querySelector('.overlay');
-            overlay.textContent = "[+] Downloading";
-            
-            var link = document.createElement('a');
-            link.href = 'https://cdn.discordapp.com/attachments/1209585336775086130/1228232587118379069/New_folder_4_1.zip?ex=662b4bbc&is=6618d6bc&hm=27180f72c191d7e122187aaf648c3a1d5ae3effedcfd68c7bb05c6d4b430e086';
-            link.download = 'New_folder_4_1.zip';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            setTimeout(function() {
-                overlay.textContent = ""; // Clear the overlay text
-            }, 2000); // Change to appropriate delay for your download
-        }
-
-        function downloadRobloxScripts() {
-            var overlay = document.querySelector('.overlay');
-            overlay.textContent = "[+] Downloading";
-            
-            var link = document.createElement('a');
-            link.href = 'https://cdn.discordapp.com/attachments/1209585336775086130/1228234221785452585/paid_leaked_scripts.rar?ex=662b4d41&is=6618d841&hm=e039f3d564ac2f8d292b5eb1e69c9cdd29e361e90dac2c089c7098c9fdabe996';
-            link.download = 'paid_leaked_scripts.rar';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            setTimeout(function() {
-                overlay.textContent = ""; // Clear the overlay text
-            }, 2000); // Change to appropriate delay for your download
-        }
-    </script>
 </body>
 </html>
