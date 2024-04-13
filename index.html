@@ -1,134 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haunted Configs</title>
-    <style>
-        body {
-            background-color: rgb(23, 23, 23);
-            color: white; /* Setting text color to white for better visibility */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .box {
-            width: 400px;
-            height: 300px;
-            background-color: rgba(0, 0, 0, 0); /* Transparent background */
-            border: 2px solid rgb(45, 45, 45); /* Border color */
-            position: relative; /* Needed for absolute positioning */
-            border-radius: 10px; /* Rounded corners */
-            animation: fadeIn 1s ease forwards; /* Apply fade-in animation */
-        }
-
-        .textbox {
-            transition: width 0.5s ease, height 0.5s ease; /* Add smooth transition for width and height */
-        }
-
-        .textbox:focus {
-            width: 80%; /* Keep width same on focus */
-            height: 40px; /* Increase height on focus */
-        }
-
-        .textbox {
-            width: 80%;
-            height: 30px;
-            background-color: rgb(45, 45, 45);
-            border: 1px solid black;
-            border-radius: 5px; /* Rounded corners */
-            position: absolute;
-            left: 10%; /* Position from left */
-            top: calc(50% - 25px); /* Position from top with enough spacing */
-            transform: translateY(-50%); /* Center vertically */
-        }
-
-        .custom-text {
-            font-size: 23px;
-            color: rgb(109, 108, 108); /* Adjusted color to 45,45,45 */
-            font-weight: bold; /* Making the text bold */
-            text-align: center; /* Center the text */
-            position: absolute;
-            top: 10%; /* Position from top */
-            left: 50%; /* Position from left */
-            transform: translateX(-50%); /* Center horizontally */
-        }
-
-        .button-container {
-            position: absolute;
-            left: 10%;
-            top: calc(70% - 40px); /* Position the button container under the password textbox with enough spacing */
-            width: 80%;
-            display: flex;
-            justify-content: space-between; /* Ensure buttons are spaced evenly */
-        }
-
-        .button {
-            width: 100%; /* Adjust button width to fit within container with spacing */
-            height: 40px;
-            background-color: rgb(45, 45, 45);
-            color: white;
-            border: 1px solid black;
-            border-radius: 5px;
-            cursor: pointer; /* Change cursor to indicate it's clickable */
-            transition: transform 0.5s ease, background-color 0.5s ease; /* Add smooth transition for transform and background-color */
-        }
-
-        .button:hover {
-            transform: scale(1.05); /* Increase size on hover */
-            background-color: rgb(70, 70, 70); /* Highlight background color on hover */
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under Maintenance</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #171717; /* Dark gray background */
+        color: white; /* Set text color to white */
+    }
+    .container {
+        background-color: rgba(2, 2, 2, 0);
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
-    <div class="box">
-        <p class="custom-text">Login</p>
-        <input type="text" id="username" class="textbox" placeholder="Username">
-        <div class="button-container">
-            <button id="loginButton" class="button">Login</button>
-            <button class="button">[Coming Soon]</button>
-        </div>
-    </div>
 
-    <script>
-        document.getElementById('loginButton').addEventListener('click', function() {
-            var username = document.getElementById('username').value;
+<div class="container">
+    <h1>🚧 Sorry, We're Down for Maintenance 🚧</h1>
+    <p>Please Come Back Later!</p>
+</div>
 
-            if (username === '') {
-                alert('Error, Wrong Login Info');
-            } else {
-                // Redirect to main.html
-                window.location.href = 'main.html';
-            }
-        });
-
-        // Function to fade in main.html when it is loaded
-        function fadeInMain() {
-            document.body.style.opacity = 0; // Start with opacity 0
-            var fadeInInterval = setInterval(function() {
-                // Increase opacity gradually
-                document.body.style.opacity = parseFloat(document.body.style.opacity) + 0.1;
-                // Stop interval when opacity reaches 1
-                if (document.body.style.opacity >= 1) {
-                    clearInterval(fadeInInterval);
-                }
-            }, 100); // Adjust the interval duration for smoother fade-in
-        }
-
-        // Call the fadeInMain function when the page is loaded
-        window.onload = fadeInMain;
-    </script>
 </body>
 </html>
