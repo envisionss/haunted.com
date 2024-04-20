@@ -1,36 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Under Maintenance</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #171717; /* Dark gray background */
-        color: white; /* Set text color to white */
-    }
-    .container {
-        background-color: rgba(2, 2, 2, 0);
-        border: 2px solid #ffffff;
-        border-radius: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunts Configs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(12, 12, 12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .box {
+            position: relative;
+            width: 700px;
+            height: 470px; /* Adjusted height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid black;
+            z-index: 1;
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            width: 88%;
+            height: 140%;
+            background-color: rgb(112, 3, 255);
+            animation: animate 14s linear infinite;
+            z-index: 1;
+        }
+
+        .box::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            background-color: rgb(30, 31, 31);
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .inner-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 20px;
+            text-align: justify;
+            text-align: center;
+        }
+
+        .license-textbox {
+            width: 400px; /* Increased width */
+            height: 40px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            background-color: rgb(45, 45, 45); /* Changed background color */
+            color: #fff; /* Text color */
+            transition: border-width 0.3s ease; /* Smooth transition for border-width change */
+        }
+
+        .license-textbox:focus {
+            border-width: 4px; /* Increase border thickness when focused */
+        }
+
+        .submit-button {
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            background-color: rgb(142, 3, 255);
+            color: #fff;
+            transition: transform 0.3s ease; /* Smooth transition for size change */
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            transform: scale(1.05); /* Increase size on hover */
+        }
+    </style>
 </head>
+
 <body>
+    <div class="box">
+        <div class="inner-box">
+            <input type="text" class="license-textbox" placeholder="License" id="licenseTextbox">
+            <button class="submit-button" id="submitButton">Submit</button>
+            <!-- Content goes here -->
+        </div>
+    </div>
 
-<div class="container">
-    <h1>🚧 Sorry, We're Down for Maintenance 🚧</h1>
-    <p>Please Come Back Later!</p>
-</div>
+    <script>
+        const licenseTextbox = document.getElementById('licenseTextbox');
+        const submitButton = document.getElementById('submitButton');
 
+        // Event listener for when the text box gains focus
+        licenseTextbox.addEventListener('focus', function () {
+            this.style.borderColor = 'rgb(142, 3, 255)';
+        });
+
+        // Event listener for when the text box loses focus
+        licenseTextbox.addEventListener('blur', function () {
+            this.style.borderColor = '#ccc';
+        });
+
+        // Event listener for submit button click
+        submitButton.addEventListener('click', function () {
+            const licenseValue = licenseTextbox.value.trim();
+            const requiredLicense = '3xoWH0-HNyAir-Qc3sRW-aDZn2U-WaGutG-9YgAk1';
+
+            if (licenseValue === requiredLicense) {
+                window.location.href = 'main.html';
+            } else {
+                alert('Invalid license.');
+            }
+        });
+    </script>
 </body>
+
 </html>
