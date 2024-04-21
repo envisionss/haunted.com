@@ -73,7 +73,8 @@
             text-align: center;
         }
 
-        .license-textbox {
+        .license-textbox,
+        .discord-name-textbox {
             width: 400px; /* Increased width */
             height: 40px;
             font-size: 16px;
@@ -87,24 +88,7 @@
             transition: border-width 0.3s ease; /* Smooth transition for border-width change */
         }
 
-        .license-textbox:focus {
-            border-width: 4px; /* Increase border thickness when focused */
-        }
-
-        .discord-name-textbox {
-            width: 400px; /* Added Discord name input */
-            height: 40px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            padding: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-            background-color: rgb(45, 45, 45); /* Changed background color */
-            color: #fff; /* Text color */
-            transition: border-width 0.3s ease; /* Smooth transition for border-width change */
-        }
-
+        .license-textbox:focus,
         .discord-name-textbox:focus {
             border-width: 4px; /* Increase border thickness when focused */
         }
@@ -140,32 +124,31 @@
     </div>
 
     <script>
-        const licenseTextbox = document.getElementById('licenseTextbox');
-        const discordNameTextbox = document.getElementById('discordNameTextbox');
-        const submitButton = document.getElementById('submitButton');
+        document.addEventListener('DOMContentLoaded', function () {
+            const licenseTextbox = document.getElementById('licenseTextbox');
+            const discordNameTextbox = document.getElementById('discordNameTextbox');
+            const submitButton = document.getElementById('submitButton');
 
-        licenseTextbox.addEventListener('focus', function () {
-            this.style.borderColor = 'rgb(142, 3, 255)';
+            licenseTextbox.addEventListener('focus', function () {
+                this.style.borderColor = 'rgb(142, 3, 255)';
+            });
+
+            licenseTextbox.addEventListener('blur', function () {
+                this.style.borderColor = '#ccc';
+            });
+
+            submitButton.addEventListener('click', function () {
+                const licenseValue = licenseTextbox.value.trim();
+                const discordName = discordNameTextbox.value.trim();
+                const requiredLicense = 'W0aIoF-WwQ2m3-klOKnj-aJdSYX-UdK4lh-OSrNru';
+
+                if (licenseValue === requiredLicense) {
+                    window.location.href = 'main.html';
+                } else {
+                    alert('Invalid license.');
+                }
+            });
         });
-
-        licenseTextbox.addEventListener('blur', function () {
-            this.style.borderColor = '#ccc';
-        });
-
-        submitButton.addEventListener('click', function () {
-            const licenseValue = licenseTextbox.value.trim();
-            const discordName = discordNameTextbox.value.trim();
-            const requiredLicense = 'W0aIoF-WwQ2m3-klOKnj-aJdSYX-UdK4lh-OSrNru';
-
-            if (licenseValue === requiredLicense) {
-                sendMessageToDiscord(discordName);
-                window.location.href = 'main.html';
-            } else {
-                alert('Invalid license.');
-            }
-        });
-
-
     </script>
 </body>
 
