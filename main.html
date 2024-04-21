@@ -39,7 +39,7 @@
             position: absolute;
             width: 88%;
             height: 140%;
-            background-color: rgb(117, 0, 252);
+            background-color: rgb(252, 0, 0);
             animation: animate 14s linear infinite;
             z-index: 1;
         }
@@ -71,24 +71,24 @@
             text-align: center;
         }
 
-        .download-button {
+        .tab-button {
             position: absolute;
-            top: calc(56% - 275px); /* Adjusted top position */
-            left: calc(50% - 275px); /* Adjusted left position */
-            width: 200px; /* Set width */
-            height: 200px; /* Set height */
-            background-color: rgb(36, 36, 82);
+            top: calc(50% - 100px);
+            left: 50px; /* Adjusted left position */
+            width: 100px; /* Set width */
+            height: 40px; /* Set height */
+            background-color: rgb(56, 56, 56); /* Changed background color */
             color: #fff;
             border: none;
             border-radius: 5px;
-            padding: 20px; /* Added padding for better visibility */
+            padding: 10px; /* Added padding for better visibility */
             font-size: 16px;
             cursor: pointer;
             z-index: 3;
             transition: transform 0.3s ease; /* Added transition for smooth scaling */
         }
 
-        .download-button:hover {
+        .tab-button:hover {
             transform: scale(1.05); /* Scale up slightly on hover */
         }
     </style>
@@ -98,7 +98,8 @@
     <div class="box">
         <div class="innder-box"></div>
     </div>
-    <button class="download-button">Config's Download</button>
+    <button class="tab-button" style="top: calc(50% - 100px);">Tab1</button>
+    <button class="tab-button" style="top: calc(50% + 20px);">Tab2</button>
 
     <script>
         // JavaScript for downloading the file when the download button is clicked
