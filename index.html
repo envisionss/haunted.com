@@ -82,6 +82,34 @@
                 opacity: 1;
             }
         }
+
+        /* Added styles for buttons */
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #ea02ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Added style for volume slider */
+        #volumeControl {
+            position: fixed;
+            bottom: 80px; /* Adjust according to your layout */
+            left: 20px;
+            width: 150px;
+        }
+
     </style>
 </head>
 
@@ -91,6 +119,47 @@
             We're sorry, but this site is currently under maintenance. Please check back later.
         </div>
     </div>
+
+    <!-- Added volume control -->
+    <input type="range" id="volumeControl" min="0" max="100" step="1" value="50">
+
+    <!-- Added button container and buttons -->
+    <div class="button-container">
+        <button class="button" id="playButton">Play/Pause</button>
+        <button class="button" id="skipButton">Skip Song</button>
+    </div>
+
+    <script>
+        const songs = [
+            "https://raw.githubusercontent.com/fullyhaunted/haunted.com/main/Playboi%20Carti%20-%20Sky%20(Official%20Audio).mp3",
+            "https://raw.githubusercontent.com/fullyhaunted/haunted.com/main/Tay%20K%20-%20The%20Race%20%5BOfficial%20Audio%5D.mp3",
+            "https://raw.githubusercontent.com/fullyhaunted/haunted.com/main/Ken%20Carson%20-%20Succubus%20(Official%20Music%20Video).mp3",
+            "https://raw.githubusercontent.com/fullyhaunted/haunted.com/main/Coffin.mp3"
+        ];
+
+        let currentSongIndex = 0;
+        const audio = new Audio(songs[currentSongIndex]);
+
+        document.getElementById("playButton").addEventListener("click", function() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+
+        document.getElementById("skipButton").addEventListener("click", function() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            audio.src = songs[currentSongIndex];
+            audio.play(); // Ensure the audio plays after setting the source
+        });
+
+        // Volume control
+        document.getElementById("volumeControl").addEventListener("input", function() {
+            // Map the input range logarithmically to the volume range
+            audio.volume = Math.pow(10, (this.value / 100) - 1);
+        });
+    </script>
 </body>
 
 </html>
